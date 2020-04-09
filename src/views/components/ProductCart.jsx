@@ -4,7 +4,6 @@ const ProductCart = (props) => {
 
     const { productData } = props
     const { nama, harga, desc, discount, stock } = productData
-    let hasil = ''
 
     const itemProduct = () => {
         if (stock) {
@@ -25,7 +24,7 @@ const ProductCart = (props) => {
             return (
                 <div>
                     <h3>Nama Product : {nama}</h3>
-                    <h3>Stock kosong</h3>
+                    <h4 style={{ color: 'red'}}>Stock kosong</h4>
                 </div>
             )
 
@@ -39,10 +38,10 @@ const ProductCart = (props) => {
                 marginLeft: '500px',
                 width: '250px',
                 padding: '4px',
-                border: '3px solid red',
+                border: '3px solid grey',
+
                 borderRadius: '8px'
             }}>
-
 
             {itemProduct()}
 

@@ -49,12 +49,10 @@ function App() {
         arrProducts.map((val) => {
           return (
               <ProductCart productData={val} />
-             
           )
         })
       )
     }
-
 
   return (
     <div className="App">
