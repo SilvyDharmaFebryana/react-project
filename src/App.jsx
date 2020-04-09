@@ -3,33 +3,66 @@ import logo from './logo.svg';
 import NewScreen from './views/screens/NewScreen';
 import './App.css';
 import TableProduct from './views/components/TableProduct';
+import CounterScreen from './views/screens/CounterScreen';
+import ProductCart from './views/components/ProductCart';
 
 function App() {
-  let arr = ['Bandung', 'Jakarta', 'Malang']
+  // let arr = ['Bandung', 'Jakarta', 'Bali']
+  // const renderArr = () => {
+  //   return (
+  //     arr.map(val => {
+  //       return (
+  //           <CounterScreen arr={val} />
+  //       )
+  //     })
+  //   )
+  // }
+
+  let arrProducts = [
+    {
+      nama: 'Lipstick',
+      harga: 150000,
+      desc: 'gincu mantep dengan warna alami',
+      discount : 20,
+      stock: 10
+    },
+    {
+      nama: 'Bedak',
+      harga: 270000,
+      desc: 'Dempul biar malem mingguannya makin cancik',
+      discount : 50,
+      stock: 0
+
+    },
+    {
+      nama: 'Foundation',
+      harga: 300000,
+      desc: 'menutup semua dosa dosa di wajah',
+      discount : 0,
+      stock: 5
+    }
+  ]
+
+
   const renderArr = () => {
-    return (
-      arr.map((val, idx) => {
-        return (
-          <>
-            <p>{val}</p>
-            <p>{idx + 1}</p>
-            <NewScreen />
-          </>
-        )
-      })
-    )
-  }
+      return (
+        arrProducts.map((val) => {
+          return (
+              <ProductCart productData={val} />
+             
+          )
+        })
+      )
+    }
+
 
   return (
     <div className="App">
-      <h1 className="green-text">Hello World</h1>
-      <h4 style={{ border: '1px solid black', marginTop: '8px' }}>
-        Test style
-      </h4>
-      {/* {
+      <h1> Hello World !</h1>
+      {/* <ProductCart /> */}
+      {
         renderArr()
-      } */}
-      <TableProduct />
+      }
     </div>
   );
 }
