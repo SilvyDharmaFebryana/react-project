@@ -1,0 +1,90 @@
+
+.buttonBuy{
+    border: 2px solid #4747d1;
+    margin-top: 8px;
+    width: 200px;
+    height: 50px;
+    background-color: white;
+    color: #4747d1;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.buttonBuy:hover {
+    background-color: #4747d1;
+    color: white;
+}
+
+.content{
+    width: 600px;
+    height:400px;
+
+}
+
+.diskon{
+    text-decoration: line-through;
+    color: grey;
+    font-size: 20px;
+}
+
+.hasil{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.buttonDis{
+    border: 2px solid lightgray;
+    margin-top: 8px;
+    width: 200px;
+    height: 50px;
+    background-color: #a6a6a6;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+img{
+    height: 240px;
+    -webkit-box-shadow: 7px 8px 5px 0px rgba(171,164,171,1);
+    -moz-box-shadow: 7px 8px 5px 0px rgba(171,164,171,1);
+    box-shadow: 7px 8px 5px 0px rgba(171,164,171,1);
+}
+
+.container{
+    display: flex;
+    height: 500px;;
+    width: 500px;
+}
+
+.author{
+    color: grey;
+    margin-bottom: 0px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.title{
+    margin-top: 7px;
+    margin-bottom: 4px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.review{
+    margin-bottom: 14px;
+    text-align: left;
+}
+
+.desc{
+    color: grey;
+    margin-bottom: 4px; 
+    text-align: left;
+}
+
+.price{
+    margin-left: 2px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
