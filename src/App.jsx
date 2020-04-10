@@ -122,7 +122,7 @@ function App() {
     return (
       arrBooks.map((val) => {
         return (
-          <div className='col-lg-6 col-md-0'>
+          <div className='col-lg-6 col-md-3'>
             <ProductBook dataBook={val} />
           </div>
 
@@ -133,7 +133,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Hello World !</h1>
+      <h1>BOOK STORE</h1>
 
       <div style={{marginLeft:'10px', marginTop:'50px'}}>
          <div className="row"> 

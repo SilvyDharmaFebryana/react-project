@@ -16,28 +16,27 @@
 }
 
 .content{
-    width: 600px;
-    height:400px;
-
+    width: 700px;
+    height: 400px;
 }
 
 .diskon{
     text-decoration: line-through;
     color: grey;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .hasil{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 
 .buttonDis{
-    border: 2px solid lightgray;
+    border: 2px solid #cccccc;
     margin-top: 8px;
     width: 200px;
     height: 50px;
-    background-color: #a6a6a6;
+    background-color: #999999;
     color: white;
     font-size: 12px;
     font-weight: bold;
@@ -52,7 +51,7 @@ img{
 
 .container{
     display: flex;
-    height: 500px;;
+    height: 400px;;
     width: 500px;
 }
 
@@ -84,7 +83,7 @@ img{
 
 .price{
     margin-left: 2px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 
 }

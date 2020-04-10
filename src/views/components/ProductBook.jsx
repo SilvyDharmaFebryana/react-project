@@ -10,7 +10,7 @@ const ProductBook = (props) => {
     let hasil = diskon.toFixed(2)
 
     return (
-        <div className="row content ml-4" >
+        <div className="row content ml-1" >
             <div className="col-lg-4 col-md-7 text-center p-3 ">
                 <img src={image} alt="" />
             </div>
@@ -40,7 +40,7 @@ const ProductBook = (props) => {
                                 <div className="col-lg-4 col-md-7 text-center p-3">
                                     <h3 className="hasil" style={{ textAlign: 'left' }}>$ {hasil}</h3>
                                 </div>
-                                <div className="col-lg-5 col-md-7 text-center p-3">
+                                <div className="col-lg-4 col-md-7 text-center p-3">
                                     <h3 className="diskon" style={{ textAlign: 'left' }}>$ {price}</h3>
                                 </div>
                             </div>
