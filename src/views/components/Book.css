@@ -44,9 +44,9 @@
 
 img{
     height: 240px;
-    -webkit-box-shadow: 7px 8px 5px 0px rgba(171,164,171,1);
-    -moz-box-shadow: 7px 8px 5px 0px rgba(171,164,171,1);
-    box-shadow: 7px 8px 5px 0px rgba(171,164,171,1);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(168,165,168,1);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(168,165,168,1);
+    box-shadow: 10px 10px 5px 0px rgba(168,165,168,1);
 }
 
 .container{
