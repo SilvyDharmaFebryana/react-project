@@ -40,7 +40,7 @@ class RegisterScreen extends React.Component {
                 alert('berhasil menyimpan')
                 submit = true
                 document.getElementById("form-regis").reset()
-                // document.getElementById("welcome").reset()
+              
             }
         }
 
