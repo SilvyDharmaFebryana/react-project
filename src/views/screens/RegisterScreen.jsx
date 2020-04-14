@@ -78,7 +78,6 @@ class RegisterScreen extends React.Component {
             }
         }
 
-
         // const loginAcc = (e, field) => {
 
         //     this.setState({ username, password })
@@ -107,7 +106,6 @@ class RegisterScreen extends React.Component {
 
         //         this.setState({loginData: loginData});
         //  }
-
 
         // const updateUsername = (e) => {
         //     this.setState({
@@ -163,13 +161,11 @@ class RegisterScreen extends React.Component {
 
                             <input type="button" class="btn btn-primary btns-log" value="Login" onClick={() => loginAcc()} />
                         </form>
-
                     </div>
                 </center>
             </div>
-
-        )
-    }
+                )
+            }
 }
 
 export default RegisterScreen
