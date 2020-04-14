@@ -6,10 +6,20 @@ import TableProduct from './views/components/TableProduct';
 import CounterScreen from './views/screens/CounterScreen';
 import ProductCart from './views/components/ProductCart';
 import ProductBook from './views/components/ProductBook';
-import Handmaid from './handmaid.png';
-import Brave from './brave.png';
-import Crazy from './crazyRich.png';
-import Educated from './educated.png';
+import InputScreen from './views/screens/InputScreen';
+import RegisterScreen from './views/screens/RegisterScreen';
+
+
+import Handmaid from './views/assets/images/handmaid.png';
+import Brave from './views/assets/images/brave.png';
+import Crazy from './views/assets/images/crazyRich.png';
+import Educated from './views/assets/images/educated.png';
+
+import LoginForm from './views/screens/Nyoba';
+
+
+
+
 
 
 function App() {
@@ -118,30 +128,38 @@ function App() {
   ];
 
 
-  const bookArr = () => {
-    return (
-      arrBooks.map((val) => {
-        return (
-          <div className='col-lg-6 col-md-3'>
-            <ProductBook dataBook={val} />
-          </div>
+  // const bookArr = () => {
+  //   return (
+  //     arrBooks.map((val) => {
+  //       return (
+  //         <div className='col-lg-6 col-md-3'>
+  //           <ProductBook dataBook={val} />
+  //         </div>
 
-        )
-      })
-    )
-  }
+  //       )
+  //     })
+  //   )
+  // }
 
   return (
     <div className="App">
-      <h1>BOOK STORE</h1>
+      <h1>Hello World</h1>
 
-      <div style={{marginLeft:'10px', marginTop:'50px'}}>
+      {/* <div style={{marginLeft:'10px', marginTop:'50px'}}>
          <div className="row"> 
           {
            bookArr()
           }
          </div>
-      </div>
+      </div> */}
+
+      {/* <CounterScreen /> */}
+
+      {/* <InputScreen /> */}
+
+        <RegisterScreen />
+
+      {/* <LoginForm /> */}
     
     </div>
   );
