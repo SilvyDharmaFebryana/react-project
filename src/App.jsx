@@ -14,8 +14,8 @@ import Handmaid from './views/assets/images/handmaid.png';
 import Brave from './views/assets/images/brave.png';
 import Crazy from './views/assets/images/crazyRich.png';
 import Educated from './views/assets/images/educated.png';
+import LoginForm from './views/screens/LoginForm';
 
-import LoginForm from './views/screens/Nyoba';
 
 
 
@@ -157,9 +157,11 @@ function App() {
 
       {/* <InputScreen /> */}
 
-        <RegisterScreen />
+        {/* <RegisterScreen /> */}
 
       {/* <LoginForm /> */}
+
+      <LoginForm />
     
     </div>
   );
