@@ -12,7 +12,7 @@ class LifecycleScreen extends React.Component{
     componentDidMount() {
         // alert('Hallo kamu sudah masuk ke sini')
         // this.setState({ username: "blackwidow" })
-        alert('jam mulai')
+        // alert('jam mulai')
         this.timer = setInterval(
             () => this.triggerClock(), 1000
         )

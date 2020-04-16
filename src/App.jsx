@@ -1,4 +1,7 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+
 import logo from './logo.svg';
 import NewScreen from './views/screens/NewScreen';
 import './App.css';
@@ -15,6 +18,9 @@ import Brave from './views/assets/images/brave.png';
 import Crazy from './views/assets/images/crazyRich.png';
 import Educated from './views/assets/images/educated.png';
 import LoginForm from './views/screens/LoginForm';
+import LifecycleScreen from './views/screens/LifecycleScreen';
+import HomeScreen from './views/screens/HomeScreen';
+import PageNotFound from './views/screens/PageNotFound';
 
 
 
@@ -142,28 +148,40 @@ function App() {
   // }
 
   return (
+    // <div className="App">
+    //   <h1>Hello World</h1>
+    //   {/* <div style={{marginLeft:'10px', marginTop:'50px'}}>
+    //      <div className="row"> 
+    //       {
+    //        bookArr()
+    //       }
+    //      </div>
+    //   </div> */}
+    //   {/* <CounterScreen /> */}
+    //   {/* <InputScreen /> */}
+    //     {/* <RegisterScreen /> */}
+    //   {/* <LoginForm /> */}
+    //   {/* <LoginForm /> */}
+    //   <LifecycleScreen />
+    // </div>
+
+
     <div className="App">
-      <h1>Hello World</h1>
+      <BrowserRouter>
+        {/* <LifecycleScreen /> */}
 
-      {/* <div style={{marginLeft:'10px', marginTop:'50px'}}>
-         <div className="row"> 
-          {
-           bookArr()
-          }
-         </div>
-      </div> */}
+        <Switch>
+          
+          <Route exact path="/home" component={HomeScreen} />
+          <Route exact path="/Auth" component={LoginForm} />
+          <Route exact path="/Input" component={InputScreen} />
+          <Route exact path="/Counter" component={CounterScreen} />
+          <Route path="*" component={PageNotFound} /> 
 
-      {/* <CounterScreen /> */}
-
-      {/* <InputScreen /> */}
-
-        {/* <RegisterScreen /> */}
-
-      {/* <LoginForm /> */}
-
-      <LoginForm />
-    
+        </Switch>
+      </BrowserRouter>
     </div>
+
   );
 }
 
