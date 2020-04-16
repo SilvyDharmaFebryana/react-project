@@ -172,7 +172,7 @@ function App() {
 
         <Switch>
           
-          <Route exact path="/home" component={HomeScreen} />
+          <Route exact path="/" component={HomeScreen} />
           <Route exact path="/Auth" component={LoginForm} />
           <Route exact path="/Input" component={InputScreen} />
           <Route exact path="/Counter" component={CounterScreen} />
