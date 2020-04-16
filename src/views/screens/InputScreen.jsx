@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 class InputScreen extends React.Component {
@@ -25,7 +26,7 @@ class InputScreen extends React.Component {
         return (
             <div>
                 <h1>Input Screen</h1>
-                <h3>Welcome {username}</h3>
+                <h3>Username {username}</h3>
                 <h3>Email: {email}</h3>
                 <input 
                     onChange={(e) => inputHandler(e, 'username')} 
@@ -48,6 +49,12 @@ class InputScreen extends React.Component {
                     rows="10">    
                 </textarea>
                 <p> {counter.length} / 140 </p>
+
+
+                  <Link to={"/Profile/" + username}>
+                      <input className="btn btn-primary" type="button" value="Login"/>
+                  </Link>
+    
             </div>
         )
     }

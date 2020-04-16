@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 
 
 import logo from './logo.svg';
@@ -21,6 +21,8 @@ import LoginForm from './views/screens/LoginForm';
 import LifecycleScreen from './views/screens/LifecycleScreen';
 import HomeScreen from './views/screens/HomeScreen';
 import PageNotFound from './views/screens/PageNotFound';
+import Navbar from './views/screens/Navbar';
+import ProfileScreen from './views/screens/ProfileScreen';
 
 
 
@@ -167,22 +169,21 @@ function App() {
 
 
     <div className="App">
-      <BrowserRouter>
         {/* <LifecycleScreen /> */}
-
+        <Navbar />
         <Switch>
           
           <Route exact path="/" component={HomeScreen} />
           <Route exact path="/Auth" component={LoginForm} />
           <Route exact path="/Input" component={InputScreen} />
           <Route exact path="/Counter" component={CounterScreen} />
+          <Route exact path="/Profile/:username" component={ProfileScreen} />
           <Route path="*" component={PageNotFound} /> 
 
         </Switch>
-      </BrowserRouter>
     </div>
 
   );
 }
 
-export default App;
+export default withRouter(App);
