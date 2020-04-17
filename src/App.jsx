@@ -23,6 +23,9 @@ import HomeScreen from './views/screens/HomeScreen';
 import PageNotFound from './views/screens/PageNotFound';
 import Navbar from './views/screens/Navbar';
 import ProfileScreen from './views/screens/ProfileScreen';
+import RegisterScreenNew from './views/screens/RegisterScreenNew';
+import LoginScreenNew from './views/screens/LoginScreenNew';
+import ListUser from './views/screens/ListUser';
 
 
 
@@ -171,14 +174,18 @@ function App() {
     <div className="App">
         {/* <LifecycleScreen /> */}
         <Navbar />
+        <br/>
+        <br/>
+        <br/>
         <Switch>
           
           <Route exact path="/" component={HomeScreen} />
-          <Route exact path="/Auth" component={LoginForm} />
-          <Route exact path="/Input" component={InputScreen} />
-          <Route exact path="/Counter" component={CounterScreen} />
+          <Route exact path="/Auth" component={RegisterScreenNew} />
+          <Route exact path="/Login" component={LoginScreenNew} />
           <Route exact path="/Profile/:username" component={ProfileScreen} />
+          <Route exact path="/Account" component={ListUser} />
           <Route path="*" component={PageNotFound} /> 
+          
 
         </Switch>
     </div>

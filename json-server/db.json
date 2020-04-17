@@ -1,30 +1,46 @@
 {
-    "posts": [
-        {
-            "id": 1,
-            "title": "json-server",
-            "author": "typicode"
-        }
-    ],
-    "comments": [
-        {
-            "id": 1,
-            "body": "some comment",
-            "postId": 1
-        }
-    ],
-    "profile": [
-        {
-        "id": 1,
-        "username": "admin",
-        "password": "password",
-        "fullname": "admin lala"
-        },
-        {
-        "id": 2,
-        "username": "manager",
-        "password": "password",
-        "fullname": "admin lala"
-        }
-    ]
-}   
+  "posts": [],
+  "comments": [],
+  "users": [
+    {
+      "username": "silvy16",
+      "password": "222",
+      "repPassword": "222",
+      "role": "user",
+      "firstname": "silvy",
+      "lastname": "febryana",
+      "fullname": "silvy febryana",
+      "id": 1
+    },
+    {
+      "username": "silvy1602",
+      "password": "111",
+      "repPassword": "111",
+      "role": "user",
+      "firstname": "dharma",
+      "lastname": "febryana",
+      "fullname": "dharma febryana",
+      "id": 2
+    },
+    {
+      "username": "ale01",
+      "password": "123",
+      "repPassword": "123",
+      "role": "admin",
+      "firstname": "Adam",
+      "lastname": "Levine",
+      "fullname": "Adam Levine",
+      "id": 3
+    },
+    {
+      "username": "twenty1pilots",
+      "password": "111",
+      "repPassword": "111",
+      "role": "admin",
+      "firstname": "Tyler",
+      "lastname": "Joseph",
+      "fullname": "Tyler Joseph",
+      "id": 4
+    }
+  ]
+}
