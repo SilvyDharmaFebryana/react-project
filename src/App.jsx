@@ -182,7 +182,7 @@ function App() {
           <Route exact path="/" component={HomeScreen} />
           <Route exact path="/Auth" component={RegisterScreenNew} />
           <Route exact path="/Login" component={LoginScreenNew} />
-          <Route exact path="/Profile/:username" component={ProfileScreen} />
+          <Route exact path="/Profile/:userId" component={ProfileScreen} />
           <Route exact path="/Account" component={ListUser} />
           <Route path="*" component={PageNotFound} /> 
           

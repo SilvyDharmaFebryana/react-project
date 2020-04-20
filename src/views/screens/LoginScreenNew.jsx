@@ -1,117 +1,199 @@
-import React from 'react'
-import Axios from 'axios';
-import { API_URL } from "../../constants/API"
-import { Link, Redirect } from 'react-router-dom'
 
+import React, { Component } from "react";
+import Axios from "axios";
+import { Redirect } from "react-router-dom";
+import { API_URL } from "../../constants/API";
+import swal from "sweetalert";
 
-class LoginScreenNew extends React.Component {
-
-
+class LoginScreenNew extends Component {
     state = {
         username: "",
         password: "",
-        repPassword: "",
-        role: "",
-        firstName: "",
-        lastName: "",
-        fullName: "",
         isLoggedIn: false,
-        users: [],
-        loginUsername: "",
-        loginPassword: "",
-        currentUsername: "",
-        activeEditIdx: null,
-
+        loginProfile: {},
     };
 
-
-    inputHandler = (e, field) => {
-        this.setState({ [field]: e.target.value });
+    inputHandler = (event, field) => {
+        const { value } = event.target;
+        this.setState({ [field]: value });
     };
-
 
     loginHandler = () => {
-        const { loginUsername, loginPassword } = this.state;
+        const { username, password } = this.state;
 
         Axios.get(`${API_URL}/users`, {
             params: {
-                username: loginUsername,
-                password: loginPassword,
-            }
-        }) 
-        .then((res) =>{
-          
-            for (let i = 0; i < res.data.length; i++) {
-
-                if (
-                    res.data[i].username == loginUsername &&
-                    res.data[i].password == loginPassword
-                ) {
-                    this.setState({
-                        isLoggedIn: true,
-                        currentUsername: res.data[i].username,  
-                        loginUsername: "",
-                        loginPassword: "",
-                    })
-
-                } else if (i == res.data.length - 1) {
-                    alert("User tidak ada atau password salah");
+                username,
+                password,
+            },
+        })
+            .then((res) => {
+                // Login sukses
+                if (res.data.length > 0) {
+                    swal("Success!", "Anda berhasil login", "success");
+                    this.setState({ isLoggedIn: true, loginProfile: res.data[0] });
+                } else {
+                    swal("Error!", "Username atau password salah", "error");
                 }
-            }
-        })
-
-        .catch((err) =>{
-            alert("User tidak ada atau password salah");
-        })
-    
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
-    render(){
-
-        const {
-            isLoggedIn,
-            currentUsername,
-            loginPassword,
-            loginUsername,
-        } = this.state;
-
-        if (!isLoggedIn) {
-            return(
-                    <div>
-                        <center>
-                            <div className="card p-5" style={{ width: "400px" }}>
-                                <h4>Login</h4>
-                                <input
-                                    value={loginUsername}
-                                    className="form-control mt-2"
-                                    type="text"
-                                    placeholder="Username"
-                                    onChange={(e) => this.inputHandler(e, "loginUsername")}
-                                />
-                                <input
-                                    value={loginPassword}
-                                    className="form-control mt-2"
-                                    type="text"
-                                    placeholder="Password"
-                                    onChange={(e) => this.inputHandler(e, "loginPassword")}
-                                />
-                                <input
-                                    type="button"
-                                    value="Login"
-                                    className="btn btn-primary mt-3"
-                                    onClick={this.loginHandler}
-                                />
-                            </div>
-                            {/* {isLoggedIn ? <h2>Welcome {currentUsername}</h2> : null} */}
-                        </center>
-                    </div >
-                    )
-
+    render() {
+        if (!this.state.isLoggedIn) {
+            return (
+                <div className="container d-flex justify-content-center" style={{ width: "400px", height: "300px"}}>
+                    <div className="card p-5" style={{ width: "400px" }}>
+                        <h4>Login</h4>
+                        <input
+                            className="form-control mt-2"
+                            type="text"
+                            placeholder="Username"
+                            onChange={(e) => this.inputHandler(e, "username")}
+                        />
+                        <input
+                            className="form-control mt-2"
+                            type="text"
+                            placeholder="Password"
+                            onChange={(e) => this.inputHandler(e, "password")}
+                        />
+                        <input
+                            type="button"
+                            value="Login"
+                            className="btn btn-primary mt-3"
+                            onClick={this.loginHandler}
+                        />
+                    </div>
+                </div>
+            );
         } else {
-            return <Redirect to={`/Profile/${currentUsername}`} />
+            return <Redirect to={`/profile/${this.state.loginProfile.id}`} />;
         }
-
     }
 }
 
-export default LoginScreenNew
+export default LoginScreenNew;
+
+//=========================================================================================================================================================================
+
+// import React from 'react'
+// import Axios from 'axios';
+// import { API_URL } from "../../constants/API"
+// import { Link, Redirect } from 'react-router-dom'
+
+
+// class LoginScreenNew extends React.Component {
+
+
+//     state = {
+//         username: "",
+//         password: "",
+//         repPassword: "",
+//         role: "",
+//         firstName: "",
+//         lastName: "",
+//         fullName: "",
+//         isLoggedIn: false,
+//         users: [],
+//         loginUsername: "",
+//         loginPassword: "",
+//         currentUsername: "",
+//         activeEditIdx: null,
+
+//     };
+
+
+//     inputHandler = (e, field) => {
+//         const { value } = e.target
+//         this.setState({ [field]: value });
+//     };
+
+
+//     loginHandler = () => {
+//         const { loginUsername, loginPassword } = this.state;
+
+//         Axios.get(`${API_URL}/users`, {
+//             params: {
+//                 username: loginUsername,
+//                 password: loginPassword,
+//             }
+//         }) 
+//         .then((res) =>{
+
+//             for (let i = 0; i < res.data.length; i++) {
+//                 if (
+//                     res.data[i].username == loginUsername &&
+//                     res.data[i].password == loginPassword
+//                 ) {
+//                     this.setState({
+//                         isLoggedIn: true,
+//                         currentUsername: res.data[i].username,  
+//                         loginUsername: "",
+//                         loginPassword: "",
+//                     })
+
+//                 } 
+
+//                 if (res.data.length == 0) {
+//                     alert("User tidak ada atau password salah");
+//                 }
+//             }
+//         })
+
+//         .catch((err) =>{
+//             alert("User tidak ada atau password salah");
+//         })
+
+//     };
+
+//     render(){
+
+//         const {
+//             isLoggedIn,
+//             currentUsername,
+//             loginPassword,
+//             loginUsername,
+//         } = this.state;
+
+//         if (!isLoggedIn) {
+//             return(
+//                     <div>
+//                         <center>
+//                             <div className="card p-5" style={{ width: "400px" }}>
+//                                 <h4>Login</h4>
+//                                 <input
+//                                     value={loginUsername}
+//                                     className="form-control mt-2"
+//                                     type="text"
+//                                     placeholder="Username"
+//                                     onChange={(e) => this.inputHandler(e, "loginUsername")}
+//                                 />
+//                                 <input
+//                                     value={loginPassword}
+//                                     className="form-control mt-2"
+//                                     type="text"
+//                                     placeholder="Password"
+//                                     onChange={(e) => this.inputHandler(e, "loginPassword")}
+//                                 />
+//                                 <input
+//                                     type="button"
+//                                     value="Login"
+//                                     className="btn btn-primary mt-3"
+//                                     onClick={this.loginHandler}
+//                                 />
+//                             </div>
+//                             {/* {isLoggedIn ? <h2>Welcome {currentUsername}</h2> : null} */}
+//                         </center>
+//                     </div >
+//                     )
+
+//         } else {
+//             return <Redirect to={`/Profile/${currentUsername}`} />
+//         }
+
+//     }
+// }
+
+// export default LoginScreenNew

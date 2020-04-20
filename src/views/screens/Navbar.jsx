@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 
 class Navbar extends React.Component {
@@ -12,12 +13,16 @@ class Navbar extends React.Component {
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Login">Login</Link>
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Account">List Account</Link>
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/">Home</Link>
-                <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Profile/:username">Profile</Link>
-                
+                {this.props.todo.todoInput}
             </div>
         )
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        todo: state.todo,
+    }
+}
 
-export default Navbar 
+export default connect(mapStateToProps)(Navbar) 

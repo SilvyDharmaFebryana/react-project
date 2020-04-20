@@ -2,6 +2,8 @@ import React from 'react'
 import Axios from 'axios' // mengahsilkan sebuah promise 
 import { API_URL } from "../../constants/API"
 import { Link, Redirect } from 'react-router-dom'
+import { Spinner } from 'reactstrap'
+import swal from "sweetalert";
 
 
 class RegisterScreenNew extends React.Component {
@@ -16,29 +18,29 @@ class RegisterScreenNew extends React.Component {
         lastName: "",
         fullName: "",
         isRegister: false,
+        isLoading: false,
         users: [],
-        loginUsername: "",
-        loginPassword: "",
-        currentUsername: "",
-        activeEditIdx: null,
-
     };
 
     inputHandler = (e, field) => {
-        this.setState({ [field]: e.target.value });
+        const { value } = e.target
+        this.setState({ [field]: value });
     };
 
 
 
     registerPostDataHandler = () => {
         const { repPassword, password, username, users, firstName, lastName, role, fullName } = this.state
+
+        this.setState({ isLoading: true })
+        setTimeout(() => {
             Axios.get(`${API_URL}/users`, {
                 params: {
                     username: username,
                 }
-            }) 
-
-            .then ((res) =>{
+            })
+        
+            .then((res) => {
                 if (res.data.length == 0) {
                     if (repPassword == password) {
                         Axios.post(`${API_URL}/users`, {
@@ -50,7 +52,6 @@ class RegisterScreenNew extends React.Component {
                             lastname: lastName,
                             fullname: firstName + ' ' + lastName
                         })
-
                             .then((res) => {
                                 alert('Berhasil Menyimpan')
                                 this.setState({
@@ -63,19 +64,21 @@ class RegisterScreenNew extends React.Component {
                                 })
 
                             })
-                            .catch(() => {
+                            .catch((err) => {
                                 alert("Password belum cocok")
                             })
                     } else {
                         alert("Password belum cocok");
                     }
-                }else {
+                } else {
                     alert('username sudah ada')
                 }
             })
             .catch((err) => {
                 alert('username sudah ada')
             })
+
+        }, 1500)
 
 }
 
@@ -88,13 +91,7 @@ class RegisterScreenNew extends React.Component {
             firstName,
             lastName,
             role,
-            fullName,
             isRegister,
-            users,
-            currentUsername,
-            activeEditIdx,
-            loginPassword,
-            loginUsername,
         } = this.state;
 
         if (!isRegister) {
@@ -145,11 +142,37 @@ class RegisterScreenNew extends React.Component {
                                 placeholder="Role"
                                 onChange={(e) => this.inputHandler(e, "role")}
                             />
+                            {/* {
+                                username,
+                                password,
+                                repPassword,
+                                firstName,
+                                lastName,
+                                role == false ? (
+                                    <input
+                                        type="button"
+                                        value="Register"
+                                        className="btn btn-primary mt-3"
+                                        onClick={this.registerPostDataHandler}
+                                        disabled
+                                    />
+                                ) : <input
+                                        type="button"
+                                        value="Register"
+                                        className="btn btn-primary mt-3"
+                                        onClick={this.registerPostDataHandler}
+                                    />
+                            } */}
+
+                            {
+                               
+                            }
                             <input
                                 type="button"
                                 value="Register"
                                 className="btn btn-primary mt-3"
-                                onClick={this.registerPostDataHandler}
+                                onClick={this.registerPostDataHandler}  
+                                disabled={this.state.isLoading}                             
                             />
                         </div>
 
@@ -160,7 +183,7 @@ class RegisterScreenNew extends React.Component {
 
         } else if (isRegister) {
             return (
-                <Link to = "/Login"> 
+                <Link to="/Login">
                     <input
                         type="button"
                         value="Click for Login"
@@ -170,7 +193,7 @@ class RegisterScreenNew extends React.Component {
             )
         }
 
-        
+
     }
 }
 
