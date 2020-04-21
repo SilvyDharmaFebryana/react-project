@@ -5,9 +5,6 @@ import { todoInputHandler, usernameInputHandler, todoListHandler } from "../../r
 class TodoReduxScreen extends React.Component {
 
 
-    
-    todoListDataHandler 
-
 
     render() {
         return (

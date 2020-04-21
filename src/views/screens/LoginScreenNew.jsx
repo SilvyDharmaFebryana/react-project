@@ -4,11 +4,14 @@ import Axios from "axios";
 import { Redirect } from "react-router-dom";
 import { API_URL } from "../../constants/API";
 import swal from "sweetalert";
+import { connect } from "react-redux";
+import { todoInputHandler, getUsernameHandler} from "../../redux/actions";
 
 class LoginScreenNew extends Component {
     state = {
         username: "",
         password: "",
+        fullname: "",
         isLoggedIn: false,
         loginProfile: {},
     };
@@ -20,7 +23,7 @@ class LoginScreenNew extends Component {
     };
 
     loginHandler = () => {
-        const { username, password } = this.state;
+        const { username, password, fullname } = this.state;
 
         Axios.get(`${API_URL}/users`, {
             params: {
@@ -30,8 +33,9 @@ class LoginScreenNew extends Component {
         })
             .then((res) => {
                 // Login sukses
-                if (res.data.length > 0) {
+                if (res.data.length !== 0) {
                     swal("Success!", "Anda berhasil login", "success");
+                    this.props.onUserLogin(username)
                     this.setState({ isLoggedIn: true, loginProfile: res.data[0] });
                 } else {
                     swal("Error!", "Username atau password salah", "error");
@@ -53,6 +57,7 @@ class LoginScreenNew extends Component {
                             type="text"
                             placeholder="Username"
                             onChange={(e) => this.inputHandler(e, "username")}
+                            // onChange={(e) => this.props.onChangeTodo(e.target.value)}
                         />
                         <input
                             className="form-control mt-2"
@@ -75,7 +80,21 @@ class LoginScreenNew extends Component {
     }
 }
 
-export default LoginScreenNew;
+const mapStateToProps = (state) => {
+    return {
+        todo: state.todo,
+        user: state.user
+    };
+};
+
+const mapDispatchToProps = { //connect function2
+    onChangeTodo: todoInputHandler,
+    onUserLogin: getUsernameHandler,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreenNew);
+
+// export default LoginScreenNew;
 
 //=========================================================================================================================================================================
 

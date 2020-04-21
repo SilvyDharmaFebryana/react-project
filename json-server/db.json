@@ -111,6 +111,16 @@
       "lastname": "dharma febryana",
       "fullname": "silvy dharma febryana",
       "id": 11
+    },
+    {
+      "username": "vy12",
+      "password": "111",
+      "repPassword": "111",
+      "role": "user",
+      "firstname": "sil",
+      "lastname": "vy",
+      "fullname": "sil vy",
+      "id": 12
     }
   ]
 }

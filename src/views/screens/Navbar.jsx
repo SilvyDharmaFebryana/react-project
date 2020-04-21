@@ -1,9 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
+import Axios from 'axios'
+import { API_URL } from "../../constants/API"
+// import { usernameHandler } from "../../redux/actions";
 
 
 class Navbar extends React.Component {
+
+    // state = {
+    //     username: ""
+    // };
+
+    // componentDidMount() {
+    //     let userId = this.props.userId;
+
+    //     Axios.get(`${API_URL}/users/${userId}`)
+    //         .then((res) => {
+    //             console.log(res);
+
+    //             const { username } = res.data;
+    //             this.setState({
+    //                username
+    //             });
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // }
 
     render() {
 
@@ -13,9 +37,11 @@ class Navbar extends React.Component {
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Login">Login</Link>
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Account">List Account</Link>
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/">Home</Link>
-                <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Input">Input Screen</Link>
+                {/* <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Input">Input Screen</Link> */}
                 {/* {this.props.todo.todoInput} */}
                 {this.props.user.username}
+                {/* {this.props.todo.todoList} */}
+                {/* {this.state.username} */}
             </div>
         )
     }
@@ -27,5 +53,9 @@ const mapStateToProps = (state) => {
         user: state.user
     }
 }
+
+// const mapDispatchToProps = { //connect function2
+//     changeUsername: usernameHandler
+// };
 
 export default connect(mapStateToProps)(Navbar) 
