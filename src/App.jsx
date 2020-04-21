@@ -12,7 +12,6 @@ import ProductBook from './views/components/ProductBook';
 import InputScreen from './views/screens/InputScreen';
 import RegisterScreen from './views/screens/RegisterScreen';
 import TodoReduxScreen from './views/screens/TodoReduxScreen';
-import LoginScreen from './views/screens/Nyoba';
 
 
 
@@ -189,7 +188,6 @@ function App() {
           <Route exact path="/Profile/:userId" component={ProfileScreen} />
           <Route exact path="/Account" component={ListUser} />
           <Route exact path="/Todo" component={TodoReduxScreen} /> 
-          <Route exact path="/Nyoba" component={LoginScreen} /> 
           <Route path="*" component={PageNotFound} /> 
           
 
