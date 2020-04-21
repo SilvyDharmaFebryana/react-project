@@ -13,7 +13,9 @@ class Navbar extends React.Component {
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Login">Login</Link>
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Account">List Account</Link>
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/">Home</Link>
-                {this.props.todo.todoInput}
+                <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Input">Input Screen</Link>
+                {/* {this.props.todo.todoInput} */}
+                {this.props.user.username}
             </div>
         )
     }
@@ -22,6 +24,7 @@ class Navbar extends React.Component {
 const mapStateToProps = (state) => {
     return {
         todo: state.todo,
+        user: state.user
     }
 }
 
