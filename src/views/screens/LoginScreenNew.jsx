@@ -12,6 +12,7 @@ class LoginScreenNew extends Component {
         isLoggedIn: false,
         loginProfile: {},
     };
+    
 
     inputHandler = (event, field) => {
         const { value } = event.target;

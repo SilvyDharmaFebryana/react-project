@@ -4,8 +4,8 @@ const init_state = {
 };
 
 export default (state = init_state, action) => {
-    if (action.type == "TODO_INPUT") {
-        return { ...state, todoInput: action.payload }
+    if (action.type == "ON_CHANGE_USERNAME") {
+        return { ...state, username: action.payload }
     } else {
         return { ...state }
     }
