@@ -4,6 +4,9 @@ import { API_URL } from "../../constants/API"
 import { Link, Redirect } from 'react-router-dom'
 import { Spinner } from 'reactstrap'
 import swal from "sweetalert";
+import { registerHandler, loginHandler} from '../../redux/actions'
+import { connect } from "react-redux";
+
 
 
 class RegisterScreenNew extends React.Component {
@@ -30,57 +33,116 @@ class RegisterScreenNew extends React.Component {
 
 
     registerPostDataHandler = () => {
-        const { repPassword, password, username, users, firstName, lastName, role, fullName } = this.state
 
-        this.setState({ isLoading: true })
-        setTimeout(() => {
-            Axios.get(`${API_URL}/users`, {
-                params: {
-                    username: username,
-                }
-            })
+        const { username, password } = this.state;
+
+        const userData = {
+            username,
+            password,
+          
+        }
+
+        this.props.onRegis(userData)
+
+    }
+
+    //     const { repPassword, password, username, users, firstName, lastName, role, fullName, isLoading } = this.state
+
+    //     let newUser = {
+    //         username: username,
+    //         password: password,
+    //         repPassword: repPassword,
+    //         role: role,
+    //         firstname: firstName,
+    //         lastname: lastName,
+    //         fullname: firstName + ' ' + lastName,
+    //     };
+
+    //         Axios.get(`${API_URL}/users`, {
+    //             params: {
+    //                 username,
+    //             },
+    //         })
+    //             .then((res) => {
+    //                 if (res.data.length == 0) {
+    //                     Axios.post(`${API_URL}/users`, newUser)
+    //                         .then((res) => {
+    //                             alert("Akun anda telah terdaftar!");
+    //                             alert('berhasil masuk')
+    //                             this.setState({ isLoading: false });
+    //                         })
+    //                         .catch((err) => {
+    //                             alert("Terjadi kesalahan di server, mon map");
+    //                             this.setState({ isLoading: false });
+    //                         });
+    //                 } else {
+    //                     alert("Username: " + username + " sudah terpakai");
+    //                     this.setState({ isLoading: false });
+    //                 }
+    //             })
+    //             .catch((err) => {
+    //                 console.log("ERROR", err);
+    //                 this.setState({ isLoading: false });
+    //             });
         
-            .then((res) => {
-                if (res.data.length == 0) {
-                    if (repPassword == password) {
-                        Axios.post(`${API_URL}/users`, {
-                            username: username,
-                            password: password,
-                            repPassword: repPassword,
-                            role: role,
-                            firstname: firstName,
-                            lastname: lastName,
-                            fullname: firstName + ' ' + lastName
-                        })
-                            .then((res) => {
-                                alert('Berhasil Menyimpan')
-                                this.setState({
-                                    username: "",
-                                    password: "",
-                                    repPassword: "",
-                                    role: "",
-                                    firstName: "",
-                                    lastName: "",
-                                })
+    // };
 
-                            })
-                            .catch((err) => {
-                                alert("Password belum cocok")
-                            })
-                    } else {
-                        alert("Password belum cocok");
-                    }
-                } else {
-                    alert('username sudah ada')
-                }
-            })
-            .catch((err) => {
-                alert('username sudah ada')
-            })
 
-        }, 1500)
+        // const { repPassword, password, username, users, firstName, lastName, role, fullName, isLoading } = this.state
 
-}
+        // this.setState({ isLoading: true })
+        // setTimeout(() => {
+        //     Axios.get(`${API_URL}/users`, {
+        //         params: {
+        //             username: username,
+        //         }
+        //     })
+        
+        //     .then((res) => {
+        //         if (res.data.length == 0) {
+        //             if (repPassword == password) {
+        //                 Axios.post(`${API_URL}/users`, {
+        //                     username: username,
+        //                     password: password,
+        //                     repPassword: repPassword,
+        //                     role: role,
+        //                     firstname: firstName,
+        //                     lastname: lastName,
+        //                     fullname: firstName + ' ' + lastName,
+        //                 })
+        //                     .then((res) => {
+        //                         alert('Berhasil Menyimpan')
+        //                         this.setState({
+        //                             username: "",
+        //                             password: "",
+        //                             repPassword: "",
+        //                             role: "",
+        //                             firstName: "",
+        //                             lastName: "",
+        //                             isLoading: false,
+        //                         })
+
+        //                     })
+        //                     .catch((err) => {
+        //                         alert("Password belum cocok")
+        //                     })
+        //             } else {
+        //                 alert("Password belum cocok");
+        //                 this.setState({ isLoading: false });
+        //             }
+        //         } else {
+        //             alert('username sudah ada')
+        //             this.setState({ isLoading: false });
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.log("ERROR", err);
+        //         this.setState({ isLoading: false });
+        //     })
+        // }, 1500)
+        // }
+
+
 
     render() {
 
@@ -172,7 +234,7 @@ class RegisterScreenNew extends React.Component {
                                 value="Register"
                                 className="btn btn-primary mt-3"
                                 onClick={this.registerPostDataHandler}  
-                                disabled={this.state.isLoading}                             
+                                // disabled={this.state.isLoading}                             
                             />
                         </div>
 
@@ -197,4 +259,17 @@ class RegisterScreenNew extends React.Component {
     }
 }
 
-export default RegisterScreenNew
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    };
+};
+
+const mapDispatchToProps = {
+    onRegis: registerHandler,
+    onLogin: loginHandler,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreenNew);
+
+// export default RegisterScreenNew

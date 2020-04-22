@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { todoInputHandler, usernameInputHandler, todoListHandler } from "../../redux/actions";
+import { todoInputHandler, usernameInputHandler, todoListHandler, loginHandler } from "../../redux/actions";
+import user from "../../redux/reducers/user";
 
 class TodoReduxScreen extends React.Component {
 
@@ -12,7 +13,7 @@ class TodoReduxScreen extends React.Component {
                 <h1>Todo Screen</h1>
                 {/* <h2>{this.props.todo.todoInput}</h2>
                 <h3>{this.props.user.username}</h3> */}
-                <input
+                {/* <input
                     type="text"
                     className="form-control"
                     placeholder="Input Todo Item"
@@ -29,12 +30,20 @@ class TodoReduxScreen extends React.Component {
                         return <p>{val}</p>
                     })}
             
-                {/* <input
+                <input
                     type="text"
                     className="form-control"
                     placeholder="Input Username"
                     onChange={(e) => this.props.onChangeUsername(e.target.value)}
                 /> */}
+
+                <p>Testing 1 : {this.props.user.testing} </p>
+                <p>Testing 2 : {this.props.user.testing2} </p>
+                <input 
+                    type="button" 
+                    value="Testing 1" 
+                    className="btn btn-success"
+                    onClick={this.props.onLoginHandler} />
             </div>
         );
     }
@@ -55,7 +64,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = { //connect function2
     onChangeTodo: todoInputHandler,
     onChangeUsername: usernameInputHandler,
-    onAddTodoList: todoListHandler
+    onAddTodoList: todoListHandler,
+    onLoginHandler: loginHandler,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoReduxScreen);
+// urutannya            reducer       , actions             class component

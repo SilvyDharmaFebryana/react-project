@@ -93,16 +93,6 @@
       "id": 9
     },
     {
-      "username": "",
-      "password": "",
-      "repPassword": "",
-      "role": "",
-      "firstname": "",
-      "lastname": "",
-      "fullname": " ",
-      "id": 10
-    },
-    {
       "username": "sil10",
       "password": "1010",
       "repPassword": "1010",
@@ -121,6 +111,96 @@
       "lastname": "vy",
       "fullname": "sil vy",
       "id": 12
+    },
+    {
+      "username": "layelaye",
+      "password": "123",
+      "repPassword": "123",
+      "role": "user",
+      "firstname": "lala",
+      "lastname": "yeye",
+      "fullname": "lala yeye",
+      "id": 13
+    },
+    {
+      "username": "yaya",
+      "fullName": "",
+      "password": "101",
+      "role": "user",
+      "id": 14
+    },
+    {
+      "username": "wawa",
+      "fullName": "",
+      "password": "101",
+      "role": "user",
+      "id": 15
+    },
+    {
+      "username": "amel",
+      "password": "dika",
+      "repPassword": "dika",
+      "role": "user",
+      "firstname": "sinta",
+      "lastname": "amelia",
+      "fullname": "sinta amelia",
+      "id": 16
+    },
+    {
+      "username": "ikeh",
+      "password": "111",
+      "repPassword": "111",
+      "role": "user",
+      "firstname": "ika",
+      "lastname": "ika",
+      "fullname": "ika ika",
+      "id": 17
+    },
+    {
+      "username": "ikeha",
+      "password": "lala",
+      "repPassword": "lala",
+      "role": "user",
+      "firstname": "ika",
+      "lastname": "ika",
+      "fullname": "ika ika",
+      "id": 18
+    },
+    {
+      "username": "dio",
+      "password": "dio",
+      "fullname": "undefined undefined",
+      "id": 19
+    },
+    {
+      "username": "sintaeka",
+      "password": "123",
+      "fullname": "undefined undefined",
+      "id": 20
+    },
+    {
+      "username": "vvv",
+      "password": "111",
+      "fullname": "undefined undefined",
+      "id": 21
+    },
+    {
+      "username": "gabriel",
+      "password": "123",
+      "fullname": "undefined undefined",
+      "id": 22
+    },
+    {
+      "username": "abi",
+      "password": "123",
+      "fullname": "undefined undefined",
+      "id": 23
+    },
+    {
+      "username": "iba",
+      "password": "123",
+      "fullname": "undefined undefined",
+      "id": 24
     }
   ]
 }

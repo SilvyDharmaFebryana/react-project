@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import { API_URL } from "../../constants/API";
 import swal from "sweetalert";
 import { connect } from "react-redux";
-import { todoInputHandler, getUsernameHandler} from "../../redux/actions";
+import { loginHandler } from "../../redux/actions";
 
 class LoginScreenNew extends Component {
     state = {
@@ -15,7 +15,7 @@ class LoginScreenNew extends Component {
         isLoggedIn: false,
         loginProfile: {},
     };
-    
+
 
     inputHandler = (event, field) => {
         const { value } = event.target;
@@ -23,45 +23,52 @@ class LoginScreenNew extends Component {
     };
 
     loginHandler = () => {
-        const { username, password, fullname } = this.state;
+        const { username, password } = this.state;
 
-        Axios.get(`${API_URL}/users`, {
-            params: {
-                username,
-                password,
-            },
-        })
-            .then((res) => {
-                // Login sukses
-                if (res.data.length !== 0) {
-                    swal("Success!", "Anda berhasil login", "success");
-                    this.props.onUserLogin(username)
-                    this.setState({ isLoggedIn: true, loginProfile: res.data[0] });
-                } else {
-                    swal("Error!", "Username atau password salah", "error");
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        const userData = {
+            username,
+            password,
+        }
+
+        this.props.onLogin(userData)
+
+        // Axios.get(`${API_URL}/users`, {
+        //     params: {
+        //         username,
+        //         password,
+        //     },
+        // })
+        //     .then((res) => {
+        //         if (res.data.length !== 0) {
+        //             swal("Success!", "Anda berhasil login", "success");
+        //             this.props.onUserLogin(username)
+        //             this.setState({ isLoggedIn: true, loginProfile: res.data[0] });
+        //         } else {
+        //             swal("Error!", "Username atau password salah", "error");
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //     });
+
     };
 
     render() {
         if (!this.state.isLoggedIn) {
             return (
-                <div className="container d-flex justify-content-center" style={{ width: "400px", height: "300px"}}>
+                <div className="container d-flex justify-content-center" style={{ width: "400px", height: "300px" }}>
                     <div className="card p-5" style={{ width: "400px" }}>
                         <h4>Login</h4>
+                        <p>Hai, <b>{this.props.user.username}</b></p>
                         <input
                             className="form-control mt-2"
                             type="text"
                             placeholder="Username"
                             onChange={(e) => this.inputHandler(e, "username")}
-                            // onChange={(e) => this.props.onChangeTodo(e.target.value)}
                         />
                         <input
                             className="form-control mt-2"
-                            type="text"
+                            type="password"
                             placeholder="Password"
                             onChange={(e) => this.inputHandler(e, "password")}
                         />
@@ -82,19 +89,16 @@ class LoginScreenNew extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        todo: state.todo,
         user: state.user
     };
 };
 
-const mapDispatchToProps = { //connect function2
-    onChangeTodo: todoInputHandler,
-    onUserLogin: getUsernameHandler,
+const mapDispatchToProps = {
+   onLogin: loginHandler,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreenNew);
 
-// export default LoginScreenNew;
 
 //=========================================================================================================================================================================
 
