@@ -116,6 +116,34 @@
       "lastname": "nala",
       "fullname": "nala nala",
       "id": 12
+    },
+    {
+      "username": "eny",
+      "password": "111",
+      "role": "admin",
+      "firstname": "eny",
+      "lastname": "suswati",
+      "fullname": "eny suswati",
+      "id": 13
+    },
+    {
+      "username": "gab11",
+      "password": "111",
+      "role": "user",
+      "firstname": "gab",
+      "lastname": "gab",
+      "fullname": "gab gab",
+      "id": 14
+    },
+    {
+      "username": "silvyvy",
+      "password": "111",
+      "repPassword": "111",
+      "role": "user",
+      "firstname": "sil",
+      "lastname": "sil",
+      "fullname": "sil sil",
+      "id": 15
     }
   ]
 }

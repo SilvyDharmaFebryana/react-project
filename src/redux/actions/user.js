@@ -69,6 +69,8 @@ export const registerHandler = (dataUser) => {
                         type: "ON_REGIS_SUCCESS",
                         payload: res.data
                     })
+                    if ( repPassword == password ){
+                   
                         Axios.post(`${API_URL}/users`, {
                             username: username,
                             password: password,
@@ -91,34 +93,25 @@ export const registerHandler = (dataUser) => {
                                                 type: "ON_LOGIN_SUCCESS",
                                                 payload: res.data[0]
                                             })
-                                            swal('','Sukses menyimpan data dan masuk','success')
+                                            swal('', 'Sukses menyimpan data dan masuk', 'success')
                                         } else {
                                             dispatch({
                                                 type: "ON_LOGIN_FAILED",
                                                 payload: "Username atau password salah"
                                             })
-                                            swal('','mohon maaf gagal','error')
+                                            swal('', 'mohon maaf gagal', 'error')
                                         }
                                     })
                                     .catch(err => {
                                         console.log(err);
                                     })
-
                             })
                             .catch((err) => {
                                 console.log(err)
                             })
-
-                    // this.setState({
-                    //     username: "",
-                    //     password: "",
-                    //     repPassword: "",
-                    //     role: "",
-                    //     firstName: "",
-                    //     lastName: "",
-                    // })
-                    // alert('Sukses menyimpan data dan masuk')
-
+                    } else {
+                        alert('password tidak sama')
+                    }
                 } else {
                     dispatch({
                         type: "ON_REGIS_FAILED",

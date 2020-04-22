@@ -7,6 +7,7 @@ const init_state = {
     fullname: "",
     firstname: "",
     lastname: "",
+    repPassword: "",
     role: "",
     testing: "",
     testing2: "",
@@ -31,13 +32,14 @@ export default (state = init_state, action) => {
     } else if (action.type == "ON_LOGIN_FAILED") {
         return { ...state, errMsg: action.payload } 
     } else if (action.type == "ON_REGIS_SUCCESS") {
-        const { username, fullname, role, id, firstname, lastname } = action.payload
+        const { username, fullname, role, id, firstname, lastname, repPassword } = action.payload
         return {
             ...state,
             username,
             firstname,
             lastname,
             fullname,
+            repPassword,
             role,
             id,
         };

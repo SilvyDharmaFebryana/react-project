@@ -4,13 +4,12 @@ import { API_URL } from "../../constants/API"
 import { Link, Redirect } from 'react-router-dom'
 import { Spinner } from 'reactstrap'
 import swal from "sweetalert";
-import { registerHandler, loginHandler} from '../../redux/actions'
+import { registerHandler } from '../../redux/actions'
 import { connect } from "react-redux";
 
 
 
 class RegisterScreenNew extends React.Component {
-
 
     state = {
         username: "",
@@ -31,10 +30,9 @@ class RegisterScreenNew extends React.Component {
     };
 
 
-
     registerPostDataHandler = () => {
 
-        const { username, password, fullName, firstName, lastName, role } = this.state;
+        const { username, password, firstName, lastName, role, repPassword } = this.state;
 
         const userData = {
             username,
@@ -43,6 +41,7 @@ class RegisterScreenNew extends React.Component {
             lastname: lastName,
             firstname: firstName,
             role,
+            repPassword,
         }
 
         this.props.onRegis(userData)
@@ -228,9 +227,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     onRegis: registerHandler,
-    onLogin: loginHandler,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreenNew);
-
-// export default RegisterScreenNew
