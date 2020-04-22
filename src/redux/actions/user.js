@@ -12,21 +12,20 @@ export const getUsernameHandler = (text) => {
     };
 };
 
-// export const passwordInputHandler = (text) => {
-//     return {
-//         type: "ON_CHANGE_PASSWORD",
-//         payload: text,
-//     };
-// };
 
+// dispatch berasal dr redux thunk , 
+// jadi dispatch itu bisa langsung return 2x
 
+export const loginHandler = () => {
+    return (dispatch) => {  
+        dispatch({
+            type: "TESTING",
+            payload: "Hello World"
+        })
 
-
-
-// export const usernameHandler = (text) => {
-//     return {
-//         type: "ON_USERNAME",
-//         payload: text,
-//     };
-// };
-
+        dispatch({
+            type: "TESTING2",
+            payload: "Hello hello dunia"
+        })
+    };
+};
