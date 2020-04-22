@@ -80,6 +80,42 @@
       "lastname": "pangaribuan",
       "fullname": "gabriel pangaribuan",
       "id": 8
+    },
+    {
+      "username": "diodio",
+      "password": "111",
+      "role": "user",
+      "firstname": "diovan",
+      "lastname": "dio",
+      "fullname": "diovan dio",
+      "id": 9
+    },
+    {
+      "username": "nala",
+      "password": "1111",
+      "role": "user",
+      "firstname": "lala",
+      "lastname": "nana",
+      "fullname": "lala nana",
+      "id": 10
+    },
+    {
+      "username": "nalar",
+      "password": "111",
+      "role": "user",
+      "firstname": "allalal",
+      "lastname": "almksmasm",
+      "fullname": "allalal almksmasm",
+      "id": 11
+    },
+    {
+      "username": "nala1",
+      "password": "1111",
+      "role": "user",
+      "firstname": "nala",
+      "lastname": "nala",
+      "fullname": "nala nala",
+      "id": 12
     }
   ]
 }

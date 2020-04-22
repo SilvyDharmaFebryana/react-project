@@ -91,13 +91,13 @@ export const registerHandler = (dataUser) => {
                                                 type: "ON_LOGIN_SUCCESS",
                                                 payload: res.data[0]
                                             })
-                                            alert('Sukses menyimpan data dan masuk')
+                                            swal('','Sukses menyimpan data dan masuk','success')
                                         } else {
                                             dispatch({
                                                 type: "ON_LOGIN_FAILED",
                                                 payload: "Username atau password salah"
                                             })
-                                            alert('mohon maaf gagal')
+                                            swal('','mohon maaf gagal','error')
                                         }
                                     })
                                     .catch(err => {
@@ -109,22 +109,22 @@ export const registerHandler = (dataUser) => {
                                 console.log(err)
                             })
 
-                    this.setState({
-                        username: "",
-                        password: "",
-                        repPassword: "",
-                        role: "",
-                        firstName: "",
-                        lastName: "",
-                    })
-                    alert('Sukses menyimpan data dan masuk')
+                    // this.setState({
+                    //     username: "",
+                    //     password: "",
+                    //     repPassword: "",
+                    //     role: "",
+                    //     firstName: "",
+                    //     lastName: "",
+                    // })
+                    // alert('Sukses menyimpan data dan masuk')
 
                 } else {
                     dispatch({
                         type: "ON_REGIS_FAILED",
                         payload: "username sudah ada"
                     })
-                    alert('username sudah ada')
+                    swal('', `username ${username} sudah terpakai`, 'error')
                     this.setState({ isLoading: false });
                 }
             })
