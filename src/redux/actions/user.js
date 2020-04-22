@@ -1,5 +1,6 @@
 import Axios from "axios";
 import { API_URL } from "../../constants/API";
+import swal from 'sweetalert'
 
 export const usernameInputHandler = (text) => {
     return {
@@ -35,13 +36,13 @@ export const loginHandler = (userData) => {
                     type: "ON_LOGIN_SUCCESS",
                     payload: res.data[0]
                 })
-                alert('berhasil')
+                swal("", "Berhasil masuk", "success");
             } else {
                 dispatch ({
                     type: "ON_LOGIN_FAILED",
                     payload: "Username atau password salah"
                 })
-                alert('mohon maaf gagal')
+                swal("", "Username atau password salah", "error");
             }
             
         })
@@ -55,7 +56,7 @@ export const loginHandler = (userData) => {
 export const registerHandler = (dataUser) => {
     return (dispatch) => {
 
-        const { repPassword, password, username, users, firstName, lastName, role, fullName, isLoading } = dataUser
+        const { repPassword, password, username, firstname, lastname, role } = dataUser
 
         Axios.get(`${API_URL}/users`, {
             params: {
@@ -73,9 +74,9 @@ export const registerHandler = (dataUser) => {
                             password: password,
                             repPassword: repPassword,
                             role: role,
-                            firstname: firstName,
-                            lastname: lastName,
-                            fullname: firstName + ' ' + lastName,
+                            firstname: firstname,
+                            lastname: lastname,
+                            fullname: firstname + ' ' + lastname,
                         })
                             .then((res) => {
                                 Axios.get(`${API_URL}/users`, {
@@ -90,8 +91,7 @@ export const registerHandler = (dataUser) => {
                                                 type: "ON_LOGIN_SUCCESS",
                                                 payload: res.data[0]
                                             })
-                                            
-                                            // alert('Sukses menyimpan data dan masuk')
+                                            alert('Sukses menyimpan data dan masuk')
                                         } else {
                                             dispatch({
                                                 type: "ON_LOGIN_FAILED",
@@ -118,7 +118,7 @@ export const registerHandler = (dataUser) => {
                         lastName: "",
                     })
                     alert('Sukses menyimpan data dan masuk')
-                    
+
                 } else {
                     dispatch({
                         type: "ON_REGIS_FAILED",

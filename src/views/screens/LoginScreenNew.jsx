@@ -12,6 +12,7 @@ class LoginScreenNew extends Component {
         username: "",
         password: "",
         fullname: "",
+        role: "",
         isLoggedIn: false,
         loginProfile: {},
     };

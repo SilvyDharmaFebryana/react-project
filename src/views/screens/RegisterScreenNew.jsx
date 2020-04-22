@@ -34,59 +34,20 @@ class RegisterScreenNew extends React.Component {
 
     registerPostDataHandler = () => {
 
-        const { username, password } = this.state;
+        const { username, password, fullName, firstName, lastName, role } = this.state;
 
         const userData = {
             username,
             password,
-          
+            fullname: firstName + " " + lastName,
+            lastname: lastName,
+            firstname: firstName,
+            role,
         }
 
         this.props.onRegis(userData)
 
     }
-
-    //     const { repPassword, password, username, users, firstName, lastName, role, fullName, isLoading } = this.state
-
-    //     let newUser = {
-    //         username: username,
-    //         password: password,
-    //         repPassword: repPassword,
-    //         role: role,
-    //         firstname: firstName,
-    //         lastname: lastName,
-    //         fullname: firstName + ' ' + lastName,
-    //     };
-
-    //         Axios.get(`${API_URL}/users`, {
-    //             params: {
-    //                 username,
-    //             },
-    //         })
-    //             .then((res) => {
-    //                 if (res.data.length == 0) {
-    //                     Axios.post(`${API_URL}/users`, newUser)
-    //                         .then((res) => {
-    //                             alert("Akun anda telah terdaftar!");
-    //                             alert('berhasil masuk')
-    //                             this.setState({ isLoading: false });
-    //                         })
-    //                         .catch((err) => {
-    //                             alert("Terjadi kesalahan di server, mon map");
-    //                             this.setState({ isLoading: false });
-    //                         });
-    //                 } else {
-    //                     alert("Username: " + username + " sudah terpakai");
-    //                     this.setState({ isLoading: false });
-    //                 }
-    //             })
-    //             .catch((err) => {
-    //                 console.log("ERROR", err);
-    //                 this.setState({ isLoading: false });
-    //             });
-        
-    // };
-
 
         // const { repPassword, password, username, users, firstName, lastName, role, fullName, isLoading } = this.state
 
