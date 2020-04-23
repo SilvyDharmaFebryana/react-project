@@ -5,7 +5,10 @@ import { Redirect } from "react-router-dom";
 import { API_URL } from "../../constants/API";
 import swal from "sweetalert";
 import { connect } from "react-redux";
-import { loginHandler } from "../../redux/actions";
+import { loginHandler, logoutHandler } from "../../redux/actions";
+import Cookie from 'universal-cookie'
+
+const cookieObject = new Cookie();
 
 class LoginScreenNew extends Component {
     state = {
@@ -29,6 +32,7 @@ class LoginScreenNew extends Component {
         const userData = {
             username,
             password,
+
         }
 
         this.props.onLogin(userData)
@@ -54,8 +58,41 @@ class LoginScreenNew extends Component {
 
     };
 
+
+
+    // 1. Login dan ubah global state user menjadi data user
+    //    --> id, username, fullname, role
+    // 2. Check di app.js, jika global state user sudah terisi dengan data user, 
+    //    set cookie dengan data user
+
+    // --> component yg akan di lakukan ketika ada komponen yg di update     
+    //     komponen tersebut berupa props atau state 
+    // --> global state telah di map ke props melalui function mapStateToProps dan connect
+    // --> global state == props
+    // --> jika global state berubah makan props akan berubah, krn isi props adalah global state
+    // --> jika props berubah, componentDidUpdate akan ter-trigger dan jalan
+
+    componentDidUpdate() {
+        // jika this.props.user.id yang di panggil krn ID akan selalu ada dan beda
+        // dan brrti data orang tersebut sudah dalam global state
+
+        if (this.props.user.id > 0) {
+            cookieObject.set("authData", JSON.stringify(this.props.user))
+            console.log(this.props.user)
+        }
+
+
+    }
+
+    onLogout = () => {
+        swal('anda akan keluar')
+        this.props.logoutHandler()
+        cookieObject.remove("authData")
+    }
+
+
     render() {
-        if (!this.state.isLoggedIn) {
+        if (!this.props.user.id) {
             return (
                 <div className="container d-flex justify-content-center" style={{ width: "400px", height: "300px" }}>
                     <div className="card p-5" style={{ width: "400px" }}>
@@ -82,8 +119,14 @@ class LoginScreenNew extends Component {
                     </div>
                 </div>
             );
+            // }
         } else {
-            return <Redirect to={`/profile/${this.state.loginProfile.id}`} />;
+            return (
+                <>
+                <div>Hai</div>
+                </>
+            ) 
+        //    return <Redirect to={`/profile/${this.state.loginProfile.id}`} />;
         }
     }
 }
@@ -95,7 +138,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-   onLogin: loginHandler,
+    onLogin: loginHandler,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreenNew);

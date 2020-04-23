@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 import Cookie from 'universal-cookie'
+import { connect } from 'react-redux'
+import { userKeepLogin } from './redux/actions/user'
 
 import logo from './logo.svg';
 import NewScreen from './views/screens/NewScreen';
@@ -18,6 +20,7 @@ import Handmaid from './views/assets/images/handmaid.png';
 import Brave from './views/assets/images/brave.png';
 import Crazy from './views/assets/images/crazyRich.png';
 import Educated from './views/assets/images/educated.png';
+
 import LoginForm from './views/screens/LoginForm';
 import LifecycleScreen from './views/screens/LifecycleScreen';
 import HomeScreen from './views/screens/HomeScreen';
@@ -90,16 +93,24 @@ class App extends React.Component {
     )
   }
 
+  componentDidMount() {
+    let cookieResult = cookieObject.get("authData");
+    console.log(cookieResult);
+    if (cookieResult){
+      this.props.userKeepLogin(cookieResult)
+    }
+  }
+
+
+
   render() {
     return (
       <div className="App" >
-        {/* <LifecycleScreen /> */}
         <Navbar />
         <br />
         <br />
         <br />
         <Switch>
-
           <Route exact path="/" component={HomeScreen} />
           <Route exact path="/Auth" component={RegisterScreenNew} />
           <Route exact path="/Login" component={LoginScreenNew} />
@@ -108,14 +119,23 @@ class App extends React.Component {
           <Route exact path="/Account" component={ListUser} />
           <Route exact path="/Todo" component={TodoReduxScreen} />
           <Route path="*" component={PageNotFound} />
-
         </Switch>
       </div>
     )
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  };
+};
+
+const mapDispatchToProps = {
+  userKeepLogin,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
 
 
 

@@ -1,6 +1,8 @@
 import Axios from "axios";
 import { API_URL } from "../../constants/API";
 import swal from 'sweetalert'
+import React, { Component } from "react";
+import user from "../reducers/user";
 
 export const usernameInputHandler = (text) => {
     return {
@@ -70,7 +72,6 @@ export const registerHandler = (dataUser) => {
                         payload: res.data
                     })
                     if ( repPassword == password ){
-                   
                         Axios.post(`${API_URL}/users`, {
                             username: username,
                             password: password,
@@ -110,7 +111,7 @@ export const registerHandler = (dataUser) => {
                                 console.log(err)
                             })
                     } else {
-                        alert('password tidak sama')
+                        swal('', 'password tidak sama', 'error')
                     }
                 } else {
                     dispatch({
@@ -118,12 +119,51 @@ export const registerHandler = (dataUser) => {
                         payload: "username sudah ada"
                     })
                     swal('', `username ${username} sudah terpakai`, 'error')
-                    this.setState({ isLoading: false });
                 }
             })
             .catch((err) => {
                 console.log("ERROR", err);
             })
+    }
+};
+
+
+export const userKeepLogin = (userData) => {
+    return (dispatch) => {
+        console.log(userData)
+        Axios.get(`${API_URL}/users`, {
+            params : {
+                id: userData.id
+            }
+        })
+        .then ((res) => {
+            console.log(res);
+            if (res.data.length !== 0) {
+                dispatch({
+                    type: "ON_LOGIN_SUCCESS",
+                    payload: res.data[0]
+                })
+                // swal("", "Berhasil masuk", "success");
+            } else {
+                dispatch({
+                    type: "ON_LOGIN_FAILED",
+                    payload: "Username atau password salah"
+                })
+                swal("", "Username atau password salah", "error");
+            }
+            
+        })
+        .catch((err) => {
+            console.log(err);    
+        })
+    }
+}
+
+
+export const logoutHandler = () => {
+    return {
+        type: "ON_LOGOUT",
+        payload: "",
     }
 }
 

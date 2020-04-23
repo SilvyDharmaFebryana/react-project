@@ -43,107 +43,14 @@
       "id": 4
     },
     {
-      "username": "ikasyams2",
-      "password": "koko",
-      "repPassword": "koko",
-      "role": "admin",
-      "firstname": "ika",
-      "lastname": "syam",
-      "fullname": "ika syam",
-      "id": 5
-    },
-    {
-      "username": "ikasyam",
-      "password": "lala",
-      "repPassword": "lala",
+      "username": "nana",
+      "password": "nana",
+      "repPassword": "nana",
       "role": "user",
-      "firstname": "ika",
-      "lastname": "syam",
-      "fullname": "ika syam",
-      "id": 6
-    },
-    {
-      "username": "silvy776",
-      "password": "suju",
-      "repPassword": "suju",
-      "role": "user",
-      "firstname": "silvy",
-      "lastname": "febryanaa",
-      "fullname": "silvy febryanaa",
-      "id": 7
-    },
-    {
-      "username": "gabriel_pangab",
-      "password": "123",
-      "role": "user",
-      "firstname": "gabriel",
-      "lastname": "pangaribuan",
-      "fullname": "gabriel pangaribuan",
-      "id": 8
-    },
-    {
-      "username": "diodio",
-      "password": "111",
-      "role": "user",
-      "firstname": "diovan",
-      "lastname": "dio",
-      "fullname": "diovan dio",
-      "id": 9
-    },
-    {
-      "username": "nala",
-      "password": "1111",
-      "role": "user",
-      "firstname": "lala",
+      "firstname": "nana",
       "lastname": "nana",
-      "fullname": "lala nana",
-      "id": 10
-    },
-    {
-      "username": "nalar",
-      "password": "111",
-      "role": "user",
-      "firstname": "allalal",
-      "lastname": "almksmasm",
-      "fullname": "allalal almksmasm",
-      "id": 11
-    },
-    {
-      "username": "nala1",
-      "password": "1111",
-      "role": "user",
-      "firstname": "nala",
-      "lastname": "nala",
-      "fullname": "nala nala",
-      "id": 12
-    },
-    {
-      "username": "eny",
-      "password": "111",
-      "role": "admin",
-      "firstname": "eny",
-      "lastname": "suswati",
-      "fullname": "eny suswati",
-      "id": 13
-    },
-    {
-      "username": "gab11",
-      "password": "111",
-      "role": "user",
-      "firstname": "gab",
-      "lastname": "gab",
-      "fullname": "gab gab",
-      "id": 14
-    },
-    {
-      "username": "silvyvy",
-      "password": "111",
-      "repPassword": "111",
-      "role": "user",
-      "firstname": "sil",
-      "lastname": "sil",
-      "fullname": "sil sil",
-      "id": 15
+      "fullname": "nana nana",
+      "id": 5
     }
   ]
 }

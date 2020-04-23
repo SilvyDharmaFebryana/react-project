@@ -11,7 +11,7 @@ const init_state = {
     role: "",
     testing: "",
     testing2: "",
-    errMsg: ""
+    errMsg: "",
 };
 
 
@@ -45,6 +45,15 @@ export default (state = init_state, action) => {
         };
     } else if (action.type == "ON_REGIS_FAILED") {
         return { ...state, errMsg: action.payload } 
+    } else if (action.type == "ON_LOGOUT"){
+        const { username, fullname, role, id } = action.payload
+        return {
+            ...state,
+            username,
+            fullname,
+            role,
+            id,
+        };
     } else {
         return { ...state }
     }

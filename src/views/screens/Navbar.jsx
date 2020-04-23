@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import Axios from 'axios'
 import { API_URL } from "../../constants/API"
-// import { usernameHandler } from "../../redux/actions";
+import cookie from "universal-cookie"
+import { logoutHandler } from '../../redux/actions'
+import swal from 'sweetalert'
+
+const cookiesObject = new cookie()
 
 
 class Navbar extends React.Component {
@@ -29,6 +33,26 @@ class Navbar extends React.Component {
     //         });
     // }
 
+    onLogout = () => {
+        swal('anda akan keluar')
+        this.props.logoutHandler()
+        cookiesObject.remove("authData")
+    }
+
+    showButtonLogout = () => {
+        if (this.props.user.id) {
+            return (
+                <Link style={{ color: "#cc0052", fontWeight: "bold" }} onClick={this.onLogout}>
+                    Logout
+                </Link>
+            )
+        } else {
+            return (
+                null
+            )
+        }
+    }
+
     render() {
 
         return (
@@ -39,9 +63,12 @@ class Navbar extends React.Component {
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/">Home</Link>
                 {/* <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Input">Input Screen</Link> */}
                 {/* {this.props.todo.todoInput} */}
-                {this.props.user.username}
-                {/* {this.props.todo.todoList} */}
-                {/* {this.state.username} */}
+                {/* {this.props.user.username}  */}
+                {/* <input type="button" value="logout" onClick={this.onLogout} className="btn btn-warning" /> */}
+                {
+                    this.showButtonLogout()
+                }
+                {this.props.user.username} 
             </div>
         )
     }
@@ -54,8 +81,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-// const mapDispatchToProps = { //connect function2
-//     changeUsername: usernameHandler
-// };
+const mapDispatchToProps = { //connect function2
+    logoutHandler,
+};
 
-export default connect(mapStateToProps)(Navbar) 
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar) 
