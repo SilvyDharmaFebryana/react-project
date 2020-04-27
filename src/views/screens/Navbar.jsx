@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux'
 import Axios from 'axios'
 import { API_URL } from "../../constants/API"
@@ -7,44 +7,21 @@ import cookie from "universal-cookie"
 import { logoutHandler } from '../../redux/actions'
 import swal from 'sweetalert'
 
-const cookiesObject = new cookie()
+const cookieObject = new cookie()
 
 
 class Navbar extends React.Component {
 
-    // state = {
-    //     username: ""
-    // };
-
-    // componentDidMount() {
-    //     let userId = this.props.userId;
-
-    //     Axios.get(`${API_URL}/users/${userId}`)
-    //         .then((res) => {
-    //             console.log(res);
-
-    //             const { username } = res.data;
-    //             this.setState({
-    //                username
-    //             });
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // }
-
     onLogout = () => {
-        swal('anda akan keluar')
-        this.props.logoutHandler()
-        cookiesObject.remove("authData")
+        cookieObject.remove("authData")
+        this.props.logoutHandler()  
+        swal('anda akan keluar')  
     }
 
     showButtonLogout = () => {
         if (this.props.user.id) {
             return (
-                <Link style={{ color: "#cc0052", fontWeight: "bold" }} onClick={this.onLogout}>
-                    Logout
-                </Link>
+                <Link style={{ color: "#cc0052", fontWeight: "bold" }} onClick={this.onLogout}>Logout</Link>
             )
         } else {
             return (
@@ -61,14 +38,10 @@ class Navbar extends React.Component {
                 {/* <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Login">Login</Link> */}
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Account">List Account</Link>
                 <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/">Home</Link>
-                {/* <Link style={{ color: "#cc0052", fontWeight: "bold" }} to="/Input">Input Screen</Link> */}
-                {/* {this.props.todo.todoInput} */}
-                {/* {this.props.user.username}  */}
-                {/* <input type="button" value="logout" onClick={this.onLogout} className="btn btn-warning" /> */}
                 {
                     this.showButtonLogout()
                 }
-                {this.props.user.username} 
+                <h6 className="p-1" style={{ color: "#80002a", fontWeight: "bold" }}>Welcome, {this.props.user.username} </h6>
             </div>
         )
     }

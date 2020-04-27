@@ -80,15 +80,13 @@ class LoginScreenNew extends Component {
             cookieObject.set("authData", JSON.stringify(this.props.user))
             console.log(this.props.user)
         }
-
-
     }
 
-    onLogout = () => {
-        swal('anda akan keluar')
-        this.props.logoutHandler()
-        cookieObject.remove("authData")
-    }
+    // onLogout = () => {
+    //     swal('anda akan keluar')
+    //     this.props.logoutHandler()
+    //     cookieObject.remove("authData")
+    // }
 
 
     render() {
@@ -126,7 +124,7 @@ class LoginScreenNew extends Component {
                 <div>Hai</div>
                 </>
             ) 
-        //    return <Redirect to={`/profile/${this.state.loginProfile.id}`} />;
+          // return <Redirect to={`/profile/${this.state.loginProfile.id}`} />;
         }
     }
 }

@@ -163,7 +163,7 @@ export const userKeepLogin = (userData) => {
 export const logoutHandler = () => {
     return {
         type: "ON_LOGOUT",
-        payload: "",
+        payload: "", //payload itu untuk mebgirim data ke reduce
     }
 }
 
