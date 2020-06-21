@@ -2,7 +2,6 @@ import React from "react"
 import Axios from "axios"
 
 
-
 const API_URL = `http://localhost:8080`
 
 class AuthSpring extends React.Component {
@@ -103,8 +102,7 @@ class AuthSpring extends React.Component {
             
         console.log(this.state.formUser);
         console.log(JSON.stringify(this.state.formUser));
-        
-        
+  
     };
 
     download = () => {
@@ -142,7 +140,7 @@ class AuthSpring extends React.Component {
                 <br/>
                 <div>
                     <h2>{this.state.loginState.username}</h2>
-                    <img src={this.state.loginState.profilePicture} style={{ width: "50%"}} alt=""/>
+                    <img src={this.state.loginState.profilePicture} style={{ width: "50%", height:"100%"}} alt=""/>
                 </div>
 
             </div>
